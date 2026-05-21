@@ -28,6 +28,7 @@
     background: var(--white);
     color: var(--text);
     line-height: 1.6;
+    overflow-x: hidden;
   }
 
   /* ── NAV ── */
@@ -86,14 +87,17 @@
   .hero {
     background: var(--navy);
     background-image: linear-gradient(to bottom, rgba(13,27,46,0.7) 0%, rgba(13,27,46,0.85) 100%),
-      url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1400&q=80') center/cover no-repeat;
+      url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1400&q=80');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     min-height: 480px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 80px 40px 60px;
+    padding: 80px 20px 60px;
   }
   .hero-label {
     color: var(--gold);
@@ -113,7 +117,7 @@
     background: var(--gold);
   }
   .hero h1 {
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: clamp(28px, 5vw, 56px);
     font-weight: 800;
     color: var(--white);
     line-height: 1.15;
@@ -130,10 +134,12 @@
   }
   .hero-stats {
     display: flex;
-    gap: 48px;
+    gap: 30px;
     margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  .hero-stat { text-align: center; }
+  .hero-stat { text-align: center; min-width: 100px; }
   .hero-stat .num {
     font-size: 28px;
     font-weight: 800;
@@ -153,13 +159,14 @@
   /* ── STATS BAR ── */
   .stats-bar {
     background: var(--white);
-    padding: 36px 60px;
+    padding: 36px 20px;
     display: flex;
     justify-content: center;
-    gap: 80px;
+    gap: 40px;
+    flex-wrap: wrap;
     border-bottom: 1px solid #e8e6df;
   }
-  .stat-item { text-align: left; }
+  .stat-item { text-align: center; min-width: 200px; }
   .stat-item .big {
     font-size: 30px;
     font-weight: 800;
@@ -194,7 +201,7 @@
 
   /* ── PLANS SECTION ── */
   .plans-section {
-    padding: 80px 40px;
+    padding: 80px 20px;
     background: var(--cream);
     text-align: center;
   }
@@ -216,7 +223,7 @@
 
   .plans-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
     max-width: 1100px;
     margin: 0 auto;
@@ -275,9 +282,7 @@
     font-weight: 400;
     min-height: 54px;
   }
-  .plan-price {
-    margin-bottom: 4px;
-  }
+  .plan-price { margin-bottom: 4px; }
   .plan-price .curr {
     font-size: 14px;
     font-weight: 700;
@@ -363,43 +368,33 @@
     text-decoration: none;
     transition: all 0.2s;
   }
-  .btn-plan-gold {
-    background: var(--gold);
-    color: var(--navy);
-    border: none;
-  }
+  .btn-plan-gold { background: var(--gold); color: var(--navy); border: none; }
   .btn-plan-gold:hover { background: var(--gold-light); }
-  .btn-plan-navy {
-    background: var(--navy);
-    color: var(--white);
-    border: none;
-  }
+  .btn-plan-navy { background: var(--navy); color: var(--white); border: none; }
   .btn-plan-navy:hover { background: #1a2e48; }
 
   /* ── COMPARE TABLE ── */
-  .compare-section {
-    padding: 80px 40px;
-    background: var(--cream);
-  }
-  .compare-section .section-title,
-  .compare-section .section-sub { text-align: center; }
+  .compare-section { padding: 80px 20px; background: var(--cream); }
+  .compare-section .section-title, .compare-section .section-sub { text-align: center; }
   .compare-section .section-sub { margin-bottom: 48px; }
 
   .compare-wrap {
     max-width: 960px;
     margin: 0 auto;
     border-radius: 12px;
-    overflow: hidden;
+    overflow-x: auto;
     border: 1px solid #ddd8ce;
     background: var(--white);
   }
 
-  .compare-header {
+  .compare-header, .compare-group-header, .compare-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    min-width: 700px;
   }
+
   .compare-header-cell {
-    padding: 20px 20px;
+    padding: 20px 15px;
     text-align: center;
     border-right: 1px solid #eae7df;
   }
@@ -413,31 +408,13 @@
     color: var(--gold);
     margin-bottom: 4px;
   }
-  .ch-name {
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 6px;
-  }
+  .ch-name { font-size: 14px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
   .ch-name-dark { color: var(--navy); }
-  .ch-price {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--gold);
-  }
+  .ch-price { font-size: 22px; font-weight: 800; color: var(--gold); }
   .ch-price-dark { color: var(--navy); }
-  .ch-per {
-    font-size: 11px;
-    color: rgba(255,255,255,0.55);
-    font-weight: 400;
-  }
+  .ch-per { font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 400; }
   .ch-per-dark { color: var(--text-muted); }
 
-  .compare-group-header {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    background: #f0ede6;
-  }
   .cgh-label {
     padding: 9px 20px;
     font-size: 10px;
@@ -447,13 +424,10 @@
     color: var(--text-muted);
     grid-column: 1 / -1;
     border-top: 1px solid #ddd8ce;
+    background: #f0ede6;
   }
 
-  .compare-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    border-top: 1px solid #eae7df;
-  }
+  .compare-row { border-top: 1px solid #eae7df; }
   .compare-row:hover { background: #faf9f6; }
   .cr-label {
     padding: 14px 20px;
@@ -481,13 +455,10 @@
   .cr-avulso { font-size: 11px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
 
   /* ── AVULSOS ── */
-  .avulsos-section {
-    padding: 80px 40px;
-    background: var(--white);
-  }
+  .avulsos-section { padding: 80px 20px; background: var(--white); }
   .avulsos-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     max-width: 960px;
     margin: 0 auto 60px;
@@ -499,39 +470,14 @@
     background: var(--white);
   }
   .avulso-card:hover { border-color: var(--gold); }
-  .avulso-name {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 6px;
-  }
-  .avulso-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 14px;
-    font-weight: 400;
-    line-height: 1.5;
-  }
-  .avulso-price {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--navy);
-  }
-  .avulso-unit {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-left: 4px;
-  }
-  .avulso-empty { background: var(--cream); border-color: transparent; }
+  .avulso-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .avulso-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; font-weight: 400; line-height: 1.5; }
+  .avulso-price { font-size: 24px; font-weight: 800; color: var(--navy); }
+  .avulso-unit { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-left: 4px; }
+  .avulso-empty { display: none; }
 
   /* ── TRAFEGO PAGO ── */
-  .trafego-section {
-    background: var(--navy);
-    padding: 80px 40px;
-  }
+  .trafego-section { background: var(--navy); padding: 80px 20px; }
   .trafego-section .section-label { color: var(--gold); text-align: center; }
   .trafego-section h2 {
     font-size: clamp(22px, 3.5vw, 38px);
@@ -564,53 +510,22 @@
     padding: 18px 28px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
-  .trafego-tag {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 4px;
-  }
-  .trafego-title {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 6px;
-  }
-  .trafego-desc {
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    font-weight: 400;
-    line-height: 1.5;
-  }
+  .trafego-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .trafego-title { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+  .trafego-desc { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 400; line-height: 1.5; }
   .trafego-item {
     padding: 18px 28px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 1px solid rgba(255,255,255,0.07);
+    flex-wrap: wrap;
+    gap: 10px;
   }
   .trafego-item:last-child { border-bottom: none; }
-  .ti-left .ti-name {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 3px;
-  }
-  .ti-left .ti-note {
-    font-size: 12px;
-    color: rgba(255,255,255,0.45);
-    font-weight: 400;
-  }
-  .ti-price {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--gold);
-    white-space: nowrap;
-    margin-left: 20px;
-    padding-top: 2px;
-  }
+  .ti-left .ti-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+  .ti-left .ti-note { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 400; }
+  .ti-price { font-size: 15px; font-weight: 800; color: var(--gold); white-space: nowrap; padding-top: 2px; }
   .trafego-disclaimer {
     text-align: center;
     font-size: 11px;
@@ -622,87 +537,26 @@
   }
 
   /* ── CONDITIONS ── */
-  .conditions-section {
-    padding: 80px 40px;
-    background: var(--cream);
-    text-align: center;
-  }
+  .conditions-section { padding: 80px 20px; background: var(--cream); text-align: center; }
   .cond-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 32px;
     max-width: 960px;
     margin: 40px auto 0;
     text-align: left;
   }
-  .cond-item {}
-  .cond-num {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: var(--gold);
-    margin-bottom: 10px;
-    display: block;
-    text-transform: uppercase;
-  }
-  .cond-item::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 2px;
-    background: var(--gold);
-    margin-bottom: 16px;
-  }
-  .cond-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 8px;
-  }
-  .cond-text {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 400;
-    line-height: 1.6;
-  }
+  .cond-num { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 10px; display: block; text-transform: uppercase; }
+  .cond-item::before { content: ''; display: block; width: 32px; height: 2px; background: var(--gold); margin-bottom: 16px; }
+  .cond-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .cond-text { font-size: 13px; color: var(--text-muted); font-weight: 400; line-height: 1.6; }
 
   /* ── CTA ── */
-  .cta-section {
-    background: var(--navy);
-    padding: 90px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-section::before {
-    content: 'CCN';
-    position: absolute;
-    font-size: 300px;
-    font-weight: 900;
-    color: rgba(255,255,255,0.02);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    letter-spacing: -10px;
-    pointer-events: none;
-  }
-  .cta-section h2 {
-    font-size: clamp(28px, 4vw, 48px);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
+  .cta-section { background: var(--navy); padding: 90px 20px; text-align: center; position: relative; overflow: hidden; }
+  .cta-section h2 { font-size: clamp(24px, 4vw, 48px); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 16px; position: relative; z-index: 2; }
   .cta-section h2 span { color: var(--gold); }
-  .cta-section p {
-    font-size: 15px;
-    color: rgba(255,255,255,0.65);
-    max-width: 500px;
-    margin: 0 auto 36px;
-    font-weight: 400;
-    line-height: 1.6;
-  }
-  .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .cta-section p { font-size: 15px; color: rgba(255,255,255,0.65); max-width: 500px; margin: 0 auto 36px; font-weight: 400; line-height: 1.6; position: relative; z-index: 2; }
+  .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; z-index: 2; }
   .btn-cta-gold {
     background: var(--gold);
     color: var(--navy);
@@ -742,12 +596,11 @@
   /* ── FOOTER ── */
   footer {
     background: #07111e;
-    padding: 48px 60px 32px;
+    padding: 48px 20px 32px;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
   }
-  .footer-brand {}
   .footer-logo {
     background: var(--white);
     color: var(--navy);
@@ -758,50 +611,32 @@
     display: inline-block;
     margin-bottom: 14px;
   }
-  .footer-brand p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.45);
-    font-weight: 400;
-    line-height: 1.6;
-    max-width: 240px;
-  }
-  .footer-col h4 {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 14px;
-  }
-  .footer-col a, .footer-col p {
-    display: block;
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    margin-bottom: 7px;
-    font-weight: 400;
-    transition: color 0.2s;
-  }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 400; line-height: 1.6; max-width: 240px; }
+  .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .footer-col a, .footer-col p { display: block; font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; margin-bottom: 7px; font-weight: 400; transition: color 0.2s; }
   .footer-col a:hover { color: var(--white); }
   .footer-bottom {
     background: #07111e;
     border-top: 1px solid rgba(255,255,255,0.07);
-    padding: 18px 60px;
+    padding: 18px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
-  .footer-bottom p {
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
-    font-weight: 400;
-  }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 400; }
   .footer-bottom span { color: var(--gold); }
+
+  /* Responsividade de Menu */
+  @media (max-width: 768px) {
+    nav { height: auto; padding: 15px 20px; flex-direction: column; gap: 15px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-brand">
     <span class="nav-logo">CCN</span>
@@ -811,13 +646,10 @@
     <a href="#planos">Planos</a>
     <a href="#comparativo">Comparativo</a>
     <a href="#avulsos">Avulsos</a>
-    <a href="#monte">Monte seu Plano</a>
-    <a href="#contato">Contato</a>
     <a href="https://wa.me/5562996960234" class="btn-nav">✦ Falar com a Equipe</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <p class="hero-label">Tabela de Parceria · 2026</p>
   <h1>Sua marca no <span>jornal que conecta</span> Palmas, o Tocantins e o Brasil.</h1>
@@ -838,7 +670,6 @@
   </div>
 </section>
 
-<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
     <div class="big">120<sup>K</sup></div>
@@ -862,7 +693,6 @@
   </div>
 </div>
 
-<!-- PLANOS -->
 <section class="plans-section" id="planos">
   <p class="section-label">Planos Mensais · Parceria 2026</p>
   <h2 class="section-title">Escolha o nível de presença que sua marca precisa.</h2>
@@ -870,7 +700,6 @@
 
   <div class="plans-grid">
 
-    <!-- Plano 01 -->
     <div class="plan-card featured">
       <span class="badge-top">+ Mais Escolhido</span>
       <div class="plan-num">Plano 01</div>
@@ -893,7 +722,6 @@
       <a href="https://wa.me/5562996960234" class="btn-plan btn-plan-gold">Contratar Plano 01</a>
     </div>
 
-    <!-- Plano 02 -->
     <div class="plan-card">
       <div class="plan-num">Plano 02</div>
       <div class="plan-name">Portal + Instagram</div>
@@ -915,7 +743,6 @@
       <a href="https://wa.me/5562996960234" class="btn-plan btn-plan-navy">Contratar Plano 02</a>
     </div>
 
-    <!-- Plano 03 -->
     <div class="plan-card">
       <div class="plan-num">Plano 03</div>
       <div class="plan-name">Premium</div>
@@ -940,16 +767,14 @@
   </div>
 </section>
 
-<!-- COMPARATIVO -->
 <section class="compare-section" id="comparativo">
   <p class="section-label">Lado a Lado</p>
   <h2 class="section-title">O que está incluso em cada plano.</h2>
   <p class="section-sub">Compare item por item antes de decidir. Sem letras miúdas, sem surpresa na fatura.</p>
 
   <div class="compare-wrap">
-    <!-- Header -->
     <div class="compare-header">
-      <div class="compare-header-cell" style="background:#fff; border-right:1px solid #eae7df;"></div>
+      <div class="compare-header-cell" style="background:#fff;"></div>
       <div class="compare-header-cell featured-col">
         <div class="ch-num">Plano 01</div>
         <div class="ch-name">Divulgação no Instagram</div>
@@ -970,7 +795,6 @@
       </div>
     </div>
 
-    <!-- Instagram -->
     <div class="compare-group-header"><div class="cgh-label">Instagram @capitalcomnoticias</div></div>
     <div class="compare-row">
       <div class="cr-label">Postagens no feed</div>
@@ -997,7 +821,6 @@
       <div class="cr-cell"><span class="cr-text">1 por semana</span></div>
     </div>
 
-    <!-- Portal -->
     <div class="compare-group-header"><div class="cgh-label">Portal capitalcomnoticias.com.br</div></div>
     <div class="compare-row">
       <div class="cr-label">Postagem de notas e releases</div>
@@ -1018,7 +841,6 @@
       <div class="cr-cell"><span class="check-navy">✓</span></div>
     </div>
 
-    <!-- Atendimento -->
     <div class="compare-group-header"><div class="cgh-label">Atendimento</div></div>
     <div class="compare-row">
       <div class="cr-label">WhatsApp direto para a assessoria</div>
@@ -1033,7 +855,6 @@
       <div class="cr-cell"><span class="check-navy">✓</span></div>
     </div>
 
-    <!-- Impulsionamento -->
     <div class="compare-group-header"><div class="cgh-label">Impulsionamento Sugerido (Avulso)</div></div>
     <div class="compare-row">
       <div class="cr-label">Posts impulsionados / mês</div>
@@ -1048,7 +869,6 @@
       <div class="cr-cell"><span class="cr-text-navy">+ R$ 600/mês</span></div>
     </div>
 
-    <!-- Adicionais -->
     <div class="compare-group-header"><div class="cgh-label">Adicionais</div></div>
     <div class="compare-row">
       <div class="cr-label">Produção de card extra</div>
@@ -1059,7 +879,6 @@
   </div>
 </section>
 
-<!-- AVULSOS -->
 <section class="avulsos-section" id="avulsos">
   <p class="section-label" style="text-align:center;">Serviços Avulsos</p>
   <h2 class="section-title" style="text-align:center; margin-bottom:12px;">Precisa de algo pontual? Contrate por demanda.</h2>
@@ -1091,11 +910,9 @@
       <div class="avulso-desc">Criamos a arte gráfica para a sua divulgação.</div>
       <div><span class="avulso-price">R$120</span><span class="avulso-unit">Unitário</span></div>
     </div>
-    <div class="avulso-card avulso-empty"></div>
   </div>
 </section>
 
-<!-- TRAFEGO PAGO -->
 <section class="trafego-section">
   <p class="section-label">Mídia Paga · Contratação Avulsa</p>
   <h2>Impulsionamento das postagens — contratado à parte.</h2>
@@ -1132,7 +949,6 @@
   </div>
 </section>
 
-<!-- CONDITIONS -->
 <section class="conditions-section">
   <p class="section-label">Condições Gerais</p>
   <h2 class="section-title">Tudo claro antes de assinar.</h2>
@@ -1160,7 +976,6 @@
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section" id="contato">
   <h2>Vamos colocar sua marca <span>na pauta?</span></h2>
   <p>Fale com nossa equipe comercial. Em até 24h enviamos uma proposta personalizada conforme o porte e a frequência que sua marca precisa.</p>
@@ -1170,7 +985,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">
     <div class="footer-logo">CCN</div>
@@ -1179,7 +993,6 @@
   <div class="footer-col">
     <h4>Comercial</h4>
     <a href="https://wa.me/5562996960234">WhatsApp 62 9 9696-0234</a>
-    <a href="#">E-mail comercial</a>
     <p>Atendimento seg. a sex.<br>08h às 18h (horário de Brasília)</p>
   </div>
   <div class="footer-col">
@@ -1187,15 +1000,12 @@
     <a href="#">capitalcomnoticias.com.br</a>
     <a href="#">Instagram @capitalcomnoticias</a>
     <a href="#">YouTube</a>
-    <a href="#">Política de Privacidade</a>
   </div>
   <div class="footer-col">
     <h4>Editorias</h4>
     <a href="#">Palmas</a>
     <a href="#">Tocantins</a>
     <a href="#">Brasil &amp; Mundo</a>
-    <a href="#">Política</a>
-    <a href="#">Economia · Esportes · Cultura</a>
   </div>
 </footer>
 <div class="footer-bottom">
@@ -1204,4 +1014,4 @@
 </div>
 
 </body>
-</html> 
+</html>
